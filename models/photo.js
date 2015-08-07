@@ -5,9 +5,23 @@ var Schema = mongoose.Schema;
 // create a schema
 var photoSchema = new Schema({
   title: String,
-  caption: String,
+  slug: String,
+  status: String,
+  description: String,
+  author: {
+    name: String,
+    email: String,
+    username: String
+  },
+  meta: {
+    year: Number,
+    location: String,
+    caption: String
+  },
+  gallery: [{ name: String, slug: String }],
+  tags: [{ name: String, slug: String }],
   created_at: Date,
-  updated_at: Date
+  updated_at: Date,
 });
 
 // the schema is useless so far
