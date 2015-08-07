@@ -20,6 +20,9 @@
     "express": "^4.13.3",
     "mongoose": "^4.1.1",
     "body-parser": "^1.13.3",
-    "morgan": "^1.6.1"
+    "morgan": "^1.6.1",
+    "underscore": "^1.8.3",
+    "express-restify-mongoose": "^1.0.3",
+    "method-override": "^2.3.5"
   }
 }
