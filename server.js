@@ -23,7 +23,10 @@ var apiVersion     = '/v1';
 |--------------------------------------------------------------------------
 */
 
-var Photo = require('./models/photo');
+var User    = require('./models/user');
+var Photo   = require('./models/photo');
+var Gallery = require('./models/gallery');
+var Tag     = require('./models/tag');
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +98,8 @@ var restifyOptions = {
 
 // Set up routes for models with restify
 restify.serve(router, Photo, restifyOptions);
+restify.serve(router, Gallery, restifyOptions);
+restify.serve(router, Tag, restifyOptions);
 app.use(router);
 
 /*
