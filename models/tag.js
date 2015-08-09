@@ -16,8 +16,8 @@ var Schema = mongoose.Schema;
 var tagSchema = new Schema({
   name: String,
   slug: String,
-  created_at: Date,
-  updated_at: Date
+  created_at: {type: Date, default: Date.now},
+  updated_at: {type: Date, default: Date.now}
 });
 
 /*

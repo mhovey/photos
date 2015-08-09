@@ -30,8 +30,8 @@ var photoSchema = new Schema({
   },
   gallery: [{ name: String, slug: String }],
   tags: [{ name: String, slug: String }],
-  created_at: Date,
-  updated_at: Date,
+  created_at: {type: Date, default: Date.now},
+  updated_at: {type: Date, default: Date.now},
 });
 
 /*

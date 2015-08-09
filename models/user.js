@@ -19,8 +19,8 @@ var userSchema = new Schema({
   email: String,
   password: String,
   meta: Object,
-  created_at: Date,
-  updated_at: Date
+  created_at: {type: Date, default: Date.now},
+  updated_at: {type: Date, default: Date.now}
 });
 
 /*
