@@ -1,8 +1,18 @@
-// grab the things we need
+/*
+|--------------------------------------------------------------------------
+| Imports
+|--------------------------------------------------------------------------
+*/
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// create a schema
+/*
+|--------------------------------------------------------------------------
+| Define the actual schema
+|--------------------------------------------------------------------------
+*/
+
 var photoSchema = new Schema({
   title: String,
   slug: String,
@@ -24,9 +34,12 @@ var photoSchema = new Schema({
   updated_at: Date,
 });
 
-// the schema is useless so far
-// we need to create a model using it
+/*
+|--------------------------------------------------------------------------
+| Assign the schema and export
+|--------------------------------------------------------------------------
+*/
+
 var Photo = mongoose.model('Photo', photoSchema);
 
-// make this available to our users in our Node applications
 module.exports = Photo;
