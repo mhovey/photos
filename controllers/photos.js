@@ -1,4 +1,5 @@
 var express    = require('express');
+var _          = require('underscore');
 var Photo      = require('../models/photo');
 var router     = express.Router();
 
@@ -10,13 +11,27 @@ var router     = express.Router();
 
 router.get('/', function(req, res) {
 
-  Photo.find({}, function(err, photos) {
-
-    if(err) throw err;
-
-    res.json(photos);
-
+  // Merge passed arguments with defaults
+  var query = _.defaults(req.query, {
+    limit: 10,
+    sortBy: 'created_at'
   });
+
+  // Get the keys in the model a user can query on
+  var keys = _.keys(Photo.schema.paths);
+
+  // Separate the schema query from the others supported by Mongoose
+  // var schemaQuery = _.
+
+  // Perform the query
+  Photo
+    .find(query, function(err, photos) {
+
+      if(err) throw err;
+
+      res.json(photos);
+
+    });
 
 });
 
