@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mhovey/photos-api.git"
+    "url": "git@github.com:mhovey/photos.git"
   },
   "author": "Michael Hovey",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mhovey/photos-api/issues"
+    "url": "https://github.com/mhovey/photos/issues"
   },
-  "homepage": "https://github.com/mhovey/photos-api",
+  "homepage": "https://github.com/mhovey/photos",
   "dependencies": {
     "express": "^4.13.3",
     "mongoose": "^4.1.1",
@@ -25,7 +25,8 @@
     "express-restify-mongoose": "^1.0.3",
     "method-override": "^2.3.5",
     "bcrypt": "^0.8.5",
-    "underscore.string": "^3.1.1"
+    "underscore.string": "^3.1.1",
+    "dotenv": "^1.2.0"
   },
-  "devDependencies": { }
+  "devDependencies": {}
 }
