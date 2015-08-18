@@ -35,7 +35,7 @@ var Tag     = require('./models/tag');
 |--------------------------------------------------------------------------
 */
 
-mongoose.connect('mongodb://localhost/hoveyfamilyphotos');
+mongoose.connect('mongodb://'+process.env.DB_HOST+'/'+process.env.DB_NAME);
 
 /*
 |--------------------------------------------------------------------------
@@ -85,7 +85,7 @@ app.use(function (req, res, next) {
 */
 
 // Base route
-router.get('/api'+apiVersion, function(req, res) {
+router.get(apiPrefix+apiVersion, function(req, res) {
   res.json({ message: 'Good stuff! You have reached the base endpoint for the API.' });
 });
 
