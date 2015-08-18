@@ -1,7 +1,7 @@
 {
-  "name": "api.hoveyfamilyphotos.com",
+  "name": "photos",
   "version": "0.0.1",
-  "description": "An API built with Node.js and Express.",
+  "description": "A photo website including an API, administrative section and public facing views built with Node.js and Express.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
