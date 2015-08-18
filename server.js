@@ -15,6 +15,7 @@ var app            = express();
 var router         = express.Router();
 var port           = process.env.PORT || 3000;
 var restify        = require('express-restify-mongoose');
+var apiPrefix      = '/api';
 var apiVersion     = '/v1';
 
 /*
@@ -79,18 +80,18 @@ app.use(function (req, res, next) {
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| API Routes
 |--------------------------------------------------------------------------
 */
 
 // Base route
-router.get('/'+apiVersion, function(req, res) {
+router.get('/api'+apiVersion, function(req, res) {
   res.json({ message: 'Good stuff! You have reached the base endpoint for the API.' });
 });
 
 // Define Restify options
 var restifyOptions = {
-  prefix: '',
+  prefix: apiPrefix,
   version: apiVersion,
   lowercase: true,
   plural: true
