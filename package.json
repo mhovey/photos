@@ -23,6 +23,9 @@
     "morgan": "^1.6.1",
     "underscore": "^1.8.3",
     "express-restify-mongoose": "^1.0.3",
-    "method-override": "^2.3.5"
-  }
+    "method-override": "^2.3.5",
+    "bcrypt": "^0.8.5",
+    "underscore.string": "^3.1.1"
+  },
+  "devDependencies": { }
 }
