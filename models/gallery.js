@@ -5,7 +5,8 @@
 */
 
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var slugify  = require('underscore.string/slugify');
+var Schema   = mongoose.Schema;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,28 @@ var Schema = mongoose.Schema;
 */
 
 var gallerySchema = new Schema({
-  name: String,
-  slug: String,
+  name: { type:String, required: true },
+  slug: { type:String, required: true },
   created_at: {type: Date, default: Date.now},
   updated_at: {type: Date, default: Date.now}
+});
+
+/*
+|--------------------------------------------------------------------------
+| Middleware for the Gallery Model
+|--------------------------------------------------------------------------
+*/
+
+// Alter Gallery entries as they are saved
+gallerySchema.pre('save', function(next) {
+
+  var gallery = this;
+
+  // Slugify the name
+  gallery.slug = slugify(gallery.name);
+
+  next();
+
 });
 
 /*
@@ -26,6 +45,4 @@ var gallerySchema = new Schema({
 |--------------------------------------------------------------------------
 */
 
-var Gallery = mongoose.model('Gallery', gallerySchema);
-
-module.exports = Gallery;
+module.exports = mongoose.model('Gallery', gallerySchema);

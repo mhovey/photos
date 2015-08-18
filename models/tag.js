@@ -5,7 +5,8 @@
 */
 
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var slugify  = require('underscore.string/slugify');
+var Schema   = mongoose.Schema;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,28 @@ var Schema = mongoose.Schema;
 */
 
 var tagSchema = new Schema({
-  name: String,
-  slug: String,
+  name: { type:String, required: true },
+  slug: { type:String, required: true },
   created_at: {type: Date, default: Date.now},
   updated_at: {type: Date, default: Date.now}
+});
+
+/*
+|--------------------------------------------------------------------------
+| Middleware for the Tag Model
+|--------------------------------------------------------------------------
+*/
+
+// Alter Tag entries as they are saved
+tagSchema.pre('save', function(next) {
+
+  var tag = this;
+
+  // Slugify the name
+  tag.slug = slugify(tag.name);
+
+  next();
+
 });
 
 /*
@@ -26,6 +45,4 @@ var tagSchema = new Schema({
 |--------------------------------------------------------------------------
 */
 
-var Tag = mongoose.model('Tag', tagSchema);
-
-module.exports = Tag;
+module.exports = mongoose.model('Tag', tagSchema);

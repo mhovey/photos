@@ -5,7 +5,8 @@
 */
 
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var slugify  = require('underscore.string/slugify');
+var Schema   = mongoose.Schema;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,9 @@ var Schema = mongoose.Schema;
 */
 
 var photoSchema = new Schema({
-  title: String,
-  slug: String,
-  status: String,
+  title: { type:String, required: true },
+  slug: { type:String, required: true },
+  status: { type:String, required: true },
   description: String,
   author: {
     name: String,
@@ -36,10 +37,26 @@ var photoSchema = new Schema({
 
 /*
 |--------------------------------------------------------------------------
+| Middleware for the Photo Model
+|--------------------------------------------------------------------------
+*/
+
+// Alter Photo entries as they are saved
+photoSchema.pre('save', function(next) {
+
+  var photo = this;
+
+  // Slugify the title
+  photo.slug = slugify(photo.name);
+
+  next();
+
+});
+
+/*
+|--------------------------------------------------------------------------
 | Assign the schema and export
 |--------------------------------------------------------------------------
 */
 
-var Photo = mongoose.model('Photo', photoSchema);
-
-module.exports = Photo;
+module.exports = mongoose.model('Photo', photoSchema);
