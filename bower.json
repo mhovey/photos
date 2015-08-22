@@ -1,0 +1,9 @@
+{
+  "name": "photo-site",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5"
+  },
+  "private": true
+}
