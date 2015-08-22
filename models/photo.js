@@ -5,8 +5,8 @@
 */
 
 var mongoose = require('mongoose');
-var slugify  = require('underscore.string/slugify');
-var Schema   = mongoose.Schema;
+var slugify = require('underscore.string/slugify');
+var Schema = mongoose.Schema;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +15,18 @@ var Schema   = mongoose.Schema;
 */
 
 var photoSchema = new Schema({
-  title: { type:String, required: true },
-  slug: { type:String, required: true },
-  status: { type:String, required: true },
+  title: {
+    type: String,
+    required: true
+  },
+  slug: {
+    type: String,
+    required: true
+  },
+  status: {
+    type: String,
+    required: true
+  },
   description: String,
   author: {
     name: String,
@@ -29,10 +38,22 @@ var photoSchema = new Schema({
     location: String,
     caption: String
   },
-  gallery: [{ name: String, slug: String }],
-  tags: [{ name: String, slug: String }],
-  created_at: {type: Date, default: Date.now},
-  updated_at: {type: Date, default: Date.now},
+  gallery: [{
+    name: String,
+    slug: String
+  }],
+  tags: [{
+    name: String,
+    slug: String
+  }],
+  created_at: {
+    type: Date,
+    default: Date.now
+  },
+  updated_at: {
+    type: Date,
+    default: Date.now
+  },
 });
 
 /*
