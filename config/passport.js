@@ -5,9 +5,10 @@
 */
 
 var mongoose = require('mongoose');
-var User     = mongoose.model('User');
-var local    = require('./passport/local');
-var google   = require('./passport/google');
+var User = mongoose.model('User');
+var local = require('./passport/local');
+var google = require('./passport/google');
+var instagram = require('./passport/instagram');
 // var facebook = require('./passport/facebook');
 // var twitter  = require('./passport/twitter');
 // var linkedin = require('./passport/linkedin');
@@ -24,6 +25,7 @@ module.exports = function(passport, config) {
   // use these strategies
   passport.use('local-login', local);
   passport.use('google', google);
+  passport.use('instagram', instagram);
   // passport.use(facebook);
   // passport.use(twitter);
   // passport.use(linkedin);
