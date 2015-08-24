@@ -1,50 +1,146 @@
 <div class="container">
 
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="row">
 
-        <h1><span class="fa fa-user"></span> User Profile</h1>
+        <div class="col-sm-6 col-sm-offset-3">
 
-        <!-- show any messages that come back with authentication -->
-        {{#if success }}
-            <div class="alert alert-success" role="alert">{{success}}</div>
-        {{/if}}
+            <h1><span class="fa fa-user"></span> User Profile</h1>
 
-        {{#each errors }}
-            <div class="alert alert-danger" role="alert">{{this}}</div>
-        {{/each}}
+            <!-- show any messages that come back with authentication -->
+            {{#if success }}
+                <div class="alert alert-success" role="alert">{{success}}</div>
+            {{/if}}
 
-        <!-- Profile FORM -->
-        <form action="/profile" method="post">
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" class="form-control" name="name" value="{{ user.name }}">
-            </div>
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" class="form-control" name="username" value="{{ user.username }}">
-            </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input type="text" class="form-control" name="email" value="{{ user.email }}">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" name="password">
-            </div>
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" class="form-control" name="password-confirm">
-            </div>
+            {{#each errors }}
+                <div class="alert alert-danger" role="alert">{{this}}</div>
+            {{/each}}
 
-            <button type="submit" class="btn btn-warning btn-lg">Update Profile</button>
-        </form>
+            <!-- Profile FORM -->
+            <form action="/profile" method="post">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" name="name" value="{{ user.name }}">
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="username" value="{{ user.username }}">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="email" value="{{ user.email }}">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" class="form-control" name="password-confirm">
+                </div>
 
-        <hr>
+                <button type="submit" class="btn btn-warning btn-lg">Update Profile</button>
+            </form>
 
-        {{#if user.google}}
-            <h2>Google Connected!</h2>
-        {{/if}}
+        </div>
 
     </div>
 
-</div>
+    <hr>
+
+    <div class="row">
+
+        <div class="col-md-6 col-sm-12">
+
+            <div class="well">
+
+                <div id="profile-connection-google" class="row profile-connection">
+                    <div class="col-sm-2">
+                        <i class="fa fa-google-plus color-google connection-icon"></i>
+                    </div>
+                    <div class="col-sm-10 details">
+                        <h3>Google</h3>
+                        {{#if user.google.id}}
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Id</label>
+                                <div class="col-sm-10">
+                                    <p class="form-control-static">{{user.google.id}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Name</label>
+                                <div class="col-sm-10">
+                                    <p class="form-control-static">{{user.google.displayName}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Email</label>
+                                <div class="col-sm-10">
+                                    <p class="form-control-static">{{user.google.email}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Token</label>
+                                <div class="col-sm-10">
+                                    <p class="form-control-static">{{user.google.accessToken}}</p>
+                                </div>
+                            </div>
+                        </form>
+                        <a href="/auth/google/disconnect" type="button" class="btn btn-default">Disconnect</a>
+                        {{else}}
+                        Connect to your Google+ account to provide easier authentication and the ability to import photos.
+                        <a href="/auth/google" type="button" class="btn btn-success">Connect</a>
+                        {{/if}}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+
+            <div class="well">
+
+                <div id="profile-connection-instagram" class="row profile-connection">
+                    <div class="col-sm-2">
+                        <i class="fa fa-instagram color-instagram connection-icon"></i>
+                    </div>
+                    <div class="col-sm-10 details">
+                        <h3>Instagram</h3>
+                        {{#if user.instagram.id}}
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Id</label>
+                                <div class="col-sm-10">
+                                    <p class="form-control-static">{{user.instagram.id}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Name</label>
+                                <div class="col-sm-10">
+                                    <p class="form-control-static">{{user.instagram.fullName}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Token</label>
+                                <div class="col-sm-10">
+                                    <p class="form-control-static">{{user.instagram.accessToken}}</p>
+                                </div>
+                            </div>
+                        </form>
+                        <a href="/auth/instagram/disconnect" type="button" class="btn btn-default">Disconnect</a>
+                        {{else}}
+                        Connect to your Instagram account for easier authentication and the ability to import photos from your Instagram account.
+                        <a href="/auth/instagram" type="button" class="btn btn-success">Connect</a>
+                        {{/if}}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div> <!-- end .container -->
