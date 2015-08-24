@@ -28,7 +28,6 @@ var userSchema = new Schema({
   },
   email: {
     type: String,
-    required: true,
     index: {
       unique: true
     }
@@ -42,6 +41,13 @@ var userSchema = new Schema({
     id: String,
     displayName: String,
     email: String,
+    photo: String,
+    accessToken: String,
+    refreshToken: String
+  },
+  instagram: {
+    id: String,
+    fullName: String,
     photo: String,
     accessToken: String,
     refreshToken: String
