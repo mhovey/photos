@@ -2,8 +2,9 @@
   "name": "photo-site",
   "version": "0.0.1",
   "dependencies": {
+    "bootstrap": "~3.3.5",
     "jquery": "~2.1.4",
-    "bootstrap": "~3.3.5"
+    "normalize-css": "normalize.css#~3.0.3"
   },
   "private": true
 }
